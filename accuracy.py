@@ -1,23 +1,29 @@
+import sys
 
 def compare_parses(parse1, parse2):
     if len(parse1) > len(parse2):
         parse1, parse2 = parse2, parse1
-        
+
     offset = len(parse2) - len(parse1)
     o_to_correct = {}
-    for o in range(offset):
+    o = 0
+    while True:
         n_correct = 0
         for i in range(len(parse1)):
-            if parse1[i + o] == parse2[i]:
+            if parse1[i] == parse2[i + o]:
                 n_correct += 1
         o_to_correct[o] = n_correct
+        if o == offset:
+            break
+        o += 1
 
     max_correct = -1
     for o in o_to_correct:
         if o_to_correct[o] > max_correct:
             max_correct = o_to_correct[o]
+    assert(max_correct != -1)
 
-    return max_correct, len(parse1)
+    return max_correct, len(parse2)
 
 def get_accuracy(meter, itad):
     parsed_human = [
@@ -65,6 +71,8 @@ if __name__ == '__main__':
     ]
 
     for meter in meters:
+        print(meter)
         for x in itad:
             accuracy = get_accuracy(meter, x)
-            print(accuracy)
+            sys.stdout.write(str(accuracy) + '\t')
+        sys.stdout.write('\n')

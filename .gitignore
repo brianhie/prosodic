@@ -1,3 +1,5 @@
+parses/
+
 *.py[cod]
 
 # C extensions
