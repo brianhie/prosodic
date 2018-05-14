@@ -24,13 +24,9 @@ def parse_files(meter, path='*.txt'):
 
 if __name__ == '__main__':
     meters = [
-        'kiparskyhanson_hopkins',
-        'kiparskyhanson_shakespeare',
         'litlab',
-        'meter_arto',
-        'prose_rhythm_iambic',
-        'prose_rhythm_iambic_inviolable',
-        'prose_rhythm_iambic_violable',
+        'optimized_binary',
+        'optimized_ternary',
     ]
 
     for meter in meters:
