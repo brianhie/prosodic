@@ -1,7 +1,5 @@
 import sys
 
-from accuracy2 import *
-
 def compare_parses(parse1, parse2):
     if len(parse1) == 0 or len(parse2) == 0:
         return 0, 0
@@ -132,7 +130,8 @@ if __name__ == '__main__':
     print('Ensemble supervised')
     for x in itad:
         accuracy = ensemble_accuracy(
-            'litlab_footmin2', 'litlab_footminnos2', x
+            'optimized_binary', 'optimized_ternary', x,
+            supervised=True
         )
         sys.stdout.write(str(accuracy) + '\t')
     sys.stdout.write('\n')
@@ -140,7 +139,7 @@ if __name__ == '__main__':
     print('Ensemble unsupervised')
     for x in itad:
         accuracy = ensemble_accuracy(
-            'litlab_footmin2', 'litlab_footminnos2', x
+            'optimized_binary', 'optimized_ternary', x
         )
         sys.stdout.write(str(accuracy) + '\t')
     sys.stdout.write('\n')
